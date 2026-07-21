@@ -16,3 +16,12 @@
 - Primitives: `.display`, `.label-mono`, `.container-film`, `.cursor-block` (the motif that survives
   the boot), grain + scanline overlays, Reveal + Counter components, Lenis singleton (`lib/scroll`),
   GSAP registration (`lib/gsap`), content.ts as single source of truth for all metrics/links.
+
+## 2026-07-21 — Phase 2: terminal boot + cinematic hand-off
+- Boot.tsx: self-typing `./saksham --init` (char jitter), dot-leader log lines with delayed [ok]
+  stamps (the ~£1B line gets a longer dramatic beat), scanlines, blinking cursor, ready prompt.
+- Exits: Enter/any key/click = cinematic (lines blur upward → amber CRT flash line → overlay
+  dissolve over the mounting story); S/Esc/scroll/skip-button = instant; reduced-motion = completed
+  terminal + plain begin, simple fade. sessionStorage + #hash deep links skip the boot entirely.
+- Hero (frame one) carries the fast path: resume/github/linkedin/email links + ⌘K hint, all as
+  plain text; entrance staggers in as the overlay dissolves for a continuous hand-off.

@@ -134,6 +134,16 @@ body {
   }
 }
 
+@keyframes scrollcue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(200%);
+  }
+}
+
 /* film grain — barely-there texture so the dark reads cinematic, not flat */
 .grain {
   position: fixed;
