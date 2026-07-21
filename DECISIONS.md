@@ -38,8 +38,8 @@ everything in 30 seconds; the palette and top nav jump anywhere; every claim exi
 text regardless of animation state.
 
 ## CONFIDENTIALITY (public site — enforced, checked again in review)
-- Respan content stays at public-resume level. **No client names** (never "[redacted]"/"[redacted]" —
-  only "an enterprise fintech client" / "enterprise clients"). No security-bug specifics, no
+- Respan content stays at public-resume level. **No client names** — only "an enterprise fintech
+  client" / "enterprise clients". No security-bug specifics, no
   internal architecture, no proprietary detail beyond the resume's own bullets.
 - **No phone number** anywhere. Contact = mailto + LinkedIn + GitHub.
 - All metrics come verbatim from the resume/LinkedIn/STAR notes; nothing invented. GPA shown as
