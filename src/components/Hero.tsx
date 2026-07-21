@@ -37,7 +37,7 @@ export function Hero() {
           Aggarwal
           <span
             className="cursor-block"
-            style={{ width: '0.28em', height: '0.7em', marginLeft: '0.08em' }}
+            style={{ width: '0.16em', height: '0.68em', marginLeft: '0.1em', verticalAlign: '0em' }}
             aria-hidden="true"
           />
         </h1>

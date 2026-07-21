@@ -67,3 +67,10 @@
   reduced-motion gaps, JSON-LD alumniOf→affiliation.
 - Post-fix build clean; targeted Playwright smoke verified all behavioral fixes live.
 - README.md + .github/workflows/deploy.yml written.
+
+## 2026-07-21 — Phase 6/7: deployed + status
+- Public repo created (Saksham9426/saksham-portfolio), pushed; Pages enabled (workflow mode);
+  first Actions deploy green in 33s. Live: https://saksham9426.github.io/saksham-portfolio/
+- Full smoke test re-run against the LIVE URL (desktop/mobile/reduced-motion/resume): zero errors.
+- Final polish: hero cursor refined to true terminal proportions (0.16em, baseline-aligned).
+- STATUS.md written (done list, live URL, taste-pass items for Saksham).
