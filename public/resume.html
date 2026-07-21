@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Saksham Aggarwal — Resume</title>
+<meta name="description" content="Resume of Saksham Aggarwal — CS & Statistics @ UIUC. Software engineering, AI/ML, data." />
+<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<style>
+  :root { --accent: #a56f1d; --dim: #555; --line: #ddd; }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: #1a1a1a; background: #fafaf8; line-height: 1.5; font-size: 15px;
+    max-width: 52rem; margin: 0 auto; padding: 2.5rem 1.5rem 4rem;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .mono { font-family: ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace; }
+  .bar {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    font-size: 12px; margin-bottom: 2.2rem;
+  }
+  .bar button {
+    font: inherit; font-family: ui-monospace, monospace; cursor: pointer;
+    border: 1px solid var(--line); background: #fff; padding: 0.35rem 0.8rem; border-radius: 4px;
+  }
+  .bar button:hover { border-color: var(--accent); color: var(--accent); }
+  header.head h1 { font-size: 1.9rem; letter-spacing: -0.01em; }
+  .contact { font-size: 13px; color: var(--dim); margin-top: 0.4rem; }
+  .contact span { margin: 0 0.35rem; color: #bbb; }
+  h2 {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em;
+    border-bottom: 1px solid var(--line); padding-bottom: 0.3rem;
+    margin: 1.8rem 0 0.9rem; color: #333;
+  }
+  .row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .row .right { color: var(--dim); font-size: 13px; white-space: nowrap; }
+  .role { color: var(--dim); font-style: italic; font-size: 13.5px; }
+  ul { padding-left: 1.15rem; margin: 0.35rem 0 1rem; }
+  li { margin-bottom: 0.3rem; }
+  b { font-weight: 600; }
+  .entry { margin-bottom: 0.4rem; }
+  .skills p { margin-bottom: 0.3rem; font-size: 14px; }
+  @media print {
+    body { background: #fff; font-size: 12.5px; padding: 0; max-width: none; }
+    .bar { display: none; }
+    a { color: inherit; }
+    h2 { margin-top: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="bar mono">
+    <a href="./">← back to the film</a>
+    <button type="button" onclick="window.print()">print / save as pdf</button>
+  </div>
+
+  <header class="head">
+    <h1>Saksham Aggarwal</h1>
+    <p class="contact">
+      Champaign, IL
+      <span>·</span><a href="mailto:saksham.aggarwal@gmail.com">saksham.aggarwal@gmail.com</a>
+      <span>·</span><a href="https://www.linkedin.com/in/saksham-aggarwal-sa9/">linkedin.com/in/saksham-aggarwal-sa9</a>
+      <span>·</span><a href="https://github.com/Saksham9426">github.com/Saksham9426</a>
+    </p>
+  </header>
+
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="row"><b>University of Illinois at Urbana-Champaign (UIUC)</b><span class="right">May 2028</span></div>
+    <div class="row"><span class="role">B.S. Computer Science and Statistics · Minors: Econometrics, Mathematics</span><span class="right"><b>GPA: 3.96/4.00</b></span></div>
+    <ul>
+      <li><b>Awards &amp; Honors:</b> James Scholar Honors Program, Dean's List, YC Intern Pioneer (2026), Finalist: Google Code to Learn Contest, Published Research: Innosphere'23 (Sigma Xi)</li>
+      <li><b>Activities:</b> ACM (SIGAIDA), HackIllinois, keywords.ai Hackathon, Illinois Statistics Datathon, Product Space, PHM, NOBE, OTCR</li>
+      <li><b>Relevant Coursework:</b> Software Engineering, Data Structures &amp; Algorithms with C++, Object-Oriented Programming (Java), Computer Systems, Statistical Modeling, Probability &amp; Statistics, Linear Algebra, Discrete Structures, Data Science Programming (Python)</li>
+    </ul>
+  </div>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <p><b>Languages:</b> Python, C++, Java, C, SQL, JavaScript/TypeScript, R, Kotlin</p>
+    <p><b>AI/ML &amp; Data:</b> PyTorch, TensorFlow, Hugging Face, scikit-learn, pandas, NumPy, LLM/RAG development, LLM evaluation &amp; judging, MCP</p>
+    <p><b>Web/Backend &amp; Infra:</b> React, Vite, Django/DRF, Flask, Spring Boot, REST APIs, PostgreSQL, ClickHouse, Redis, AWS, Docker, Git, Bash, Linux</p>
+  </div>
+
+  <h2>Experience</h2>
+
+  <div class="entry">
+    <div class="row"><b>Respan (Y Combinator W24)</b><span class="right">May 2026 – Present</span></div>
+    <div class="row"><span class="role">Software Engineer Intern (Full-Stack / AI)</span><span class="right">San Francisco, CA</span></div>
+    <ul>
+      <li>Shipped LLM evaluation systems into production for <b>2 enterprise clients</b>: a fintech agent graded on <b>7</b> behavioral and safety criteria (<b>6</b> datasets, <b>7</b> LLM-judge pipelines) and a multi-tenant extraction pipeline with <b>30+</b> graders and per-customer scoring</li>
+      <li>Diagnosed and fixed a context-persistence bug in the fintech client's LLM agent and tuned it against a golden dataset, raising its evaluation score from <b>41% to 89%</b></li>
+      <li>Built a <b>runtime permission layer</b> for the fintech agent, validating each action against scope and safety policies before execution to block out-of-scope and destructive operations across <b>5,000+ daily LLM calls</b></li>
+      <li>Built a <b>Cmd-K command palette</b> (<b>93% active-user adoption</b> in 28 days, <b>sub-100ms</b> search over 6 resource types, <b>3+ clicks to one keystroke</b>) and eliminated an <b>N+1 query pattern</b> on the experiments endpoint (<b>O(N) to O(1)</b>) by reusing the codebase's bulk-resolution pattern instead of per-row lookups, shipping both across React/TypeScript and <b>Django/DRF</b></li>
+      <li>Benchmarked new frontier models (Opus 4.8, GPT-5.6, Fable 5) across <b>250+ prompts</b> on latency, cost, accuracy, and inference configs before gateway onboarding, and built the platform's <b>gateway-setup CLI</b> command</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>MetaFrazo (Phraze)</b><span class="right">January 2026 – May 2026</span></div>
+    <div class="row"><span class="role">Software Engineer Intern (AI)</span><span class="right">Chicago, IL (Remote)</span></div>
+    <ul>
+      <li>Built a versioned, reproducible test-generation system for a translation-assessment platform (<b>FastAPI</b>, Node/Express, <b>MongoDB</b>) that drove duplicate tests to <b>near zero</b>, using deterministic seeding with hash and n-gram fingerprinting</li>
+      <li>Shipped a hybrid scoring pipeline combining deterministic checks, automated metrics (<b>BERTScore, COMET</b>), and an <b>LLM</b> rubric that reached <b>0.76 Cohen's kappa</b> agreement with human QA, and cut per-test token cost <b>65%</b> by batching to amortize the system prompt</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>Beacons AI (Y Combinator S19)</b><span class="right">October 2025 – February 2026</span></div>
+    <div class="row"><span class="role">Software Product Manager</span><span class="right">Champaign, IL</span></div>
+    <ul>
+      <li>Shipped an AI-assisted deal-recommendation workflow with ML and engineering that sustained <b>200+</b> matches/week, lifted match acceptance from <b>21% to 27%</b>, and cut median time-to-first-match from <b>9.5 to 6.8 days (−28%)</b></li>
+      <li>Led <b>20+</b> creator interviews (300K to 1M followers) into a KPI and research framework that provided evidence supporting the launch of Beam, the company's AI teammate product</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>Barclays, Analytics Center of Excellence</b><span class="right">May 2025 – July 2025</span></div>
+    <div class="row"><span class="role">Data &amp; Decision Analyst</span><span class="right">Noida, India &amp; London, UK</span></div>
+    <ul>
+      <li>Built a cost-to-serve allocation engine in <b>Python and SQL</b> over <b>GBP 845M</b> across <b>20M+ customers</b> and 6 domains, surfacing a top decile worth approximately <b>GBP 1B</b> in profit and a GBP 6/customer-month baseline that informed branch-to-digital targeting, using <b>CTEs</b> and <b>window functions</b></li>
+      <li>Productionized a monthly <b>batch pipeline</b> on <b>Linux</b> with automated data-quality checks, cutting runtime from <b>6.2 to 3.9 hours (−37%)</b> and reruns from <b>8 to 3 per month</b>; outputs adopted by Channels Analytics and used by <b>10+</b> stakeholders</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>JSW Group</b><span class="right">April 2024 – June 2024</span></div>
+    <div class="row"><span class="role">Machine Learning Intern</span><span class="right">Mumbai, India</span></div>
+    <ul>
+      <li>Built an end-to-end rainfall forecasting workflow in <b>Python</b> with <b>walk-forward validation</b>, cutting <b>RMSE 18%</b> versus a seasonal-naive baseline across <b>60 stations</b> and <b>15 years</b> of data, and cleaned datasets in <b>OpenRefine</b> to reduce inconsistencies <b>30%</b></li>
+    </ul>
+  </div>
+
+  <h2>Projects &amp; Leadership</h2>
+
+  <div class="entry">
+    <div class="row"><b>Quant Research Copilot</b><span class="right mono">Python · FastAPI · Claude API · SEC EDGAR · RAG</span></div>
+    <ul>
+      <li>Built an AI agent that pulls a company's latest <b>10-K</b> from <b>SEC EDGAR</b>, chunks and indexes it, and answers analyst questions with <b>citations</b> to the exact filing text, refusing when the answer is not supported by the source</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b><a href="https://chilltrill.streamlit.app/">ChillTrill (chilltrill.streamlit.app)</a></b><span class="right mono">OpenCV · CNNs · Streamlit · Keras · TensorFlow</span></div>
+    <ul>
+      <li>Built a real-time facial-expression classifier (<b>F1 = 0.81</b> on <b>1,200</b> labeled clips, <b>55 ms/frame</b>) that curates music by detected emotion; deployed a pilot to <b>3 partner</b> institutions</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>Leadership</b><span class="right mono">Product Space @ UIUC · Megabyte Society</span></div>
+    <ul>
+      <li><b>Project Lead</b>, Product Space (Banti): co-led a 7-person team through client discovery and GTM. <b>President</b>, Megabyte Society: led a 100-member community, <b>12+</b> workshops and hackathons, <b>300+</b> participants</li>
+    </ul>
+  </div>
+
+  <h2>Publication</h2>
+  <div class="entry">
+    <ul>
+      <li><a href="https://www.internationaljournalssrg.org/IJHSS/2023/Volume10-Issue4/IJHSS-V10I4P108.pdf">“Understanding the Impact of Music on Heart Rate, Blood Pressure, and Stress Levels of Working Adults”</a> — SSRG International Journal of Humanities and Social Science; presented at Innosphere'23 and the Sigma Xi Conference (Sep 2023). National media coverage: The Times of India.</li>
+    </ul>
+  </div>
+</body>
+</html>

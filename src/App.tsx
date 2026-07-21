@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Boot } from './components/Boot'
 import { Story } from './components/Story'
+import { TopNav } from './components/TopNav'
+import { ProgressRail } from './components/ProgressRail'
+import { Palette } from './components/Palette'
 import { initSmoothScroll } from './lib/scroll'
 import { ScrollTrigger } from './lib/gsap'
 
@@ -32,10 +35,17 @@ export default function App() {
 
   return (
     <>
-      {revealed && <Story />}
+      {revealed && (
+        <>
+          <TopNav />
+          <ProgressRail />
+          <Story />
+        </>
+      )}
       {!overlayGone && (
         <Boot onReveal={() => setRevealed(true)} onDone={() => setOverlayGone(true)} />
       )}
+      <Palette enabled={overlayGone} />
       <div className="grain" aria-hidden="true" />
     </>
   )

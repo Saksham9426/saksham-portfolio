@@ -36,3 +36,13 @@
   static on reduced motion), five "shipped modules" cards at public-resume level.
 - Act IV: Quant Research Copilot card, leadership cards, contact CTA (mailto/LinkedIn/GitHub/
   resume/publication), footer with replay-boot.
+
+## 2026-07-21 — Phase 4: Cmd-K palette + fast path
+- Palette.tsx: custom-built (no cmdk dep) — subsequence fuzzy scoring, grouped results
+  (navigate / open / commands), full keyboard nav, ARIA combobox/listbox semantics, focus
+  return, scroll lock, toast output for playful commands (sudo hire-saksham, whoami,
+  boot --replay, copy email). Summonable via ⌘K / Ctrl+K, nav button, or mobile "menu".
+- TopNav: fixed translucent bar — act numerals with active tracking, resume link, ⌘K button,
+  sr-only "skip to contact" link. ProgressRail: desktop act rail with accent active state.
+- public/resume.html: hand-authored static print-friendly resume (light paper theme, print CSS,
+  no phone number) — the 30-second fast path; linked from hero, nav, palette, contact.
