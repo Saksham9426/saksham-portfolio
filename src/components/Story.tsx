@@ -1,10 +1,18 @@
 import { Hero } from './Hero'
+import { ActOrigin } from './acts/ActOrigin'
+import { ActCraft } from './acts/ActCraft'
+import { ActFrontier } from './acts/ActFrontier'
+import { ActNext } from './acts/ActNext'
 
-/** The continuous scroll film. Acts are added in build Phase 3. */
+/** The continuous scroll film: boot hand-off → four acts → contact. */
 export function Story() {
   return (
-    <div className="relative">
+    <main className="relative">
       <Hero />
-    </div>
+      <ActOrigin />
+      <ActCraft />
+      <ActFrontier />
+      <ActNext />
+    </main>
   )
 }

@@ -15,6 +15,7 @@ export const site = {
     'https://www.internationaljournalssrg.org/IJHSS/2023/Volume10-Issue4/IJHSS-V10I4P108.pdf',
   chilltrill: 'https://chilltrill.streamlit.app/',
   chilltrillRepo: 'https://github.com/Saksham9426/ChillTrill',
+  repo: 'https://github.com/Saksham9426/saksham-portfolio',
 } as const
 
 export const acts = [
@@ -27,7 +28,6 @@ export const acts = [
 export type BootLine =
   | { kind: 'cmd'; text: string }
   | { kind: 'log'; text: string; status: string; note?: string }
-  | { kind: 'ready'; text: string }
 
 export const bootLines: BootLine[] = [
   { kind: 'cmd', text: './saksham --init' },
@@ -37,66 +37,118 @@ export const bootLines: BootLine[] = [
   { kind: 'log', text: 'importing 5 internships', status: '[ok]' },
   { kind: 'log', text: 'importing 1 publication', status: '[ok]', note: "innosphere'23 · sigma xi" },
   { kind: 'log', text: 'locating ~£1B', status: '[found]' },
-  { kind: 'ready', text: 'ready.' },
 ]
 
+export type Stat = {
+  value: number
+  label: string
+  prefix?: string
+  suffix?: string
+  decimals?: number
+}
+
+export type Delta = {
+  title: string
+  note?: string
+  rows: readonly { label: string; before: number; after: number; unit: string; decimals?: number }[]
+}
+
 /** Act II — internships in chronological order: rising mastery. */
-export const craftChapters = [
+export const craftChapters: readonly {
+  id: string
+  index: string
+  company: string
+  role: string
+  where: string
+  when: string
+  thread: string
+  stats: readonly Stat[]
+  delta: Delta
+}[] = [
   {
     id: 'jsw',
+    index: '01',
     company: 'JSW Group',
     role: 'Machine Learning Intern',
     where: 'Mumbai, India',
     when: 'Apr — Jun 2024',
     thread: 'Learn the machine.',
     stats: [
-      { value: 60, label: 'weather stations', format: '' },
-      { value: 15, label: 'years of data', format: '' },
-      { value: 18, label: 'RMSE reduction vs seasonal-naive', format: '-%' },
+      { value: 60, label: 'weather stations' },
+      { value: 15, label: 'years of station data' },
+      { value: 30, prefix: '−', suffix: '%', label: 'data inconsistencies, via OpenRefine' },
     ],
+    delta: {
+      title: 'forecast error · walk-forward validation',
+      note: 'lower is better',
+      rows: [{ label: 'RMSE, indexed (seasonal-naive = 100)', before: 100, after: 82, unit: '' }],
+    },
   },
   {
     id: 'barclays',
+    index: '02',
     company: 'Barclays',
     role: 'Data & Decision Analyst · Analytics Center of Excellence',
     where: 'Noida, India & London, UK',
     when: 'May — Jul 2025',
     thread: 'Scale the question.',
     stats: [
-      { value: 845, label: 'allocated across the book', format: '£M' },
-      { value: 20, label: 'customers, six domains', format: 'M+' },
-      { value: 1, label: 'profit surfaced in the top decile', format: '~£B' },
+      { value: 845, prefix: '£', suffix: 'M', label: 'cost-to-serve allocated' },
+      { value: 20, suffix: 'M+', label: 'customers · 6 domains' },
+      { value: 1, prefix: '~£', suffix: 'B', label: 'profit surfaced in the top decile' },
     ],
+    delta: {
+      title: 'productionized monthly pipeline · linux',
+      note: 'lower is better',
+      rows: [
+        { label: 'batch runtime', before: 6.2, after: 3.9, unit: 'h', decimals: 1 },
+        { label: 'reruns per month', before: 8, after: 3, unit: '' },
+      ],
+    },
   },
   {
     id: 'beacons',
+    index: '03',
     company: 'Beacons AI',
     role: 'Software Product Manager · YC S19',
     where: 'Champaign, IL',
     when: 'Oct 2025 — Feb 2026',
     thread: 'Ship to humans.',
     stats: [
-      { value: 200, label: 'matches per week, sustained', format: '+' },
-      { value: 27, label: 'match acceptance, up from 21%', format: '%' },
-      { value: 28, label: 'median time-to-first-match', format: '-%' },
+      { value: 200, suffix: '+', label: 'matches per week, sustained' },
+      { value: 20, suffix: '+', label: 'creator interviews · 300K–1M followers' },
+      { value: 28, prefix: '−', suffix: '%', label: 'median time-to-first-match' },
     ],
+    delta: {
+      title: 'ranking + funnel iteration',
+      rows: [
+        { label: 'match acceptance (higher is better)', before: 21, after: 27, unit: '%' },
+        { label: 'time-to-first-match, days (lower is better)', before: 9.5, after: 6.8, unit: 'd', decimals: 1 },
+      ],
+    },
   },
   {
     id: 'metafrazo',
+    index: '04',
     company: 'MetaFrazo',
     role: 'Software Engineer Intern (AI) · Phraze',
     where: 'Chicago, IL · Remote',
     when: 'Jan — May 2026',
     thread: 'Make AI measurable.',
     stats: [
-      { value: 0.76, label: "Cohen's κ vs human QA", format: 'k' },
-      { value: 65, label: 'per-test token cost', format: '-%' },
-      { value: 0, label: 'duplicate tests, from deterministic seeding', format: '~' },
+      { value: 0.76, decimals: 2, label: "Cohen's κ agreement with human QA" },
+      { value: 65, prefix: '−', suffix: '%', label: 'per-test token cost' },
+      { value: 0, prefix: '≈', label: 'duplicate tests after fingerprinting' },
     ],
+    delta: {
+      title: 'hybrid scoring pipeline · batched',
+      note: 'lower is better',
+      rows: [{ label: 'token cost per test, indexed (before = 100)', before: 100, after: 35, unit: '' }],
+    },
   },
-] as const
+]
 
-/** Act III — Respan modules (public-resume level only). */
+/** Act III — Respan modules (public-resume level only; no client names). */
 export const frontierModules = [
   {
     cmd: 'eval --production',

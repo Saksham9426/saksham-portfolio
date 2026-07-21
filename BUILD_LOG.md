@@ -25,3 +25,14 @@
   terminal + plain begin, simple fade. sessionStorage + #hash deep links skip the boot entirely.
 - Hero (frame one) carries the fast path: resume/github/linkedin/email links + ⌘K hint, all as
   plain text; entrance staggers in as the overlay dissolves for a continuous hand-off.
+
+## 2026-07-21 — Phase 3: the four acts
+- ActTitle: full-viewport title cards (masked line reveal, parallax roman numeral, italic logline).
+- Act I: origin narrative + Heartune/ChillTrill terminal cards + closing thesis line.
+- Act II: four chapters (JSW → Barclays → Beacons → MetaFrazo) with sticky meta columns, count-up
+  stats, and DeltaBars before/after draw-in charts (RMSE index, pipeline runtime/reruns,
+  acceptance/time-to-match, token cost).
+- Act III: Respan setup line, pinned scroll-scrubbed 41%→89% eval centerpiece (count-up on mobile,
+  static on reduced motion), five "shipped modules" cards at public-resume level.
+- Act IV: Quant Research Copilot card, leadership cards, contact CTA (mailto/LinkedIn/GitHub/
+  resume/publication), footer with replay-boot.
