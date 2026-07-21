@@ -35,7 +35,11 @@ export function Hero() {
           Saksham
           <br />
           Aggarwal
-          <span className="cursor-block" aria-hidden="true" />
+          <span
+            className="cursor-block"
+            style={{ width: '0.28em', height: '0.7em', marginLeft: '0.08em' }}
+            aria-hidden="true"
+          />
         </h1>
         <p data-rise className="mt-8 max-w-xl text-base leading-relaxed text-dim sm:text-lg">
           Software engineer &amp; AI builder. Computer Science + Statistics at UIUC. I build systems

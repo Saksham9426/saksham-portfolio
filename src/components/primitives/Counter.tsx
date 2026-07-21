@@ -15,7 +15,7 @@ type Props = {
  * real text immediately (fast path / reduced motion / no-JS-after-hydration),
  * then animates from 0 only when motion is allowed.
  */
-export function Counter({ to, decimals = 0, prefix = '', suffix = '', duration = 1.6, className }: Props) {
+export function Counter({ to, decimals = 0, prefix = '', suffix = '', duration = 1.2, className }: Props) {
   const ref = useRef<HTMLSpanElement>(null)
 
   const fmt = (n: number) =>

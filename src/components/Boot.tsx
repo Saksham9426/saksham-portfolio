@@ -160,7 +160,7 @@ export function Boot({ onReveal, onDone }: Props) {
           exit(true)
         }}
       >
-        skip intro ⏎
+        skip intro →
       </button>
 
       <div
