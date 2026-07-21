@@ -46,3 +46,13 @@
   sr-only "skip to contact" link. ProgressRail: desktop act rail with accent active state.
 - public/resume.html: hand-authored static print-friendly resume (light paper theme, print CSS,
   no phone number) — the 30-second fast path; linked from hero, nav, palette, contact.
+
+## 2026-07-21 — Phase 5: content, responsiveness, a11y, smoke test
+- Live Playwright smoke test (Edge headless): desktop boot→film→acts→palette, mobile 390px,
+  reduced-motion context, resume page — zero console/page errors. 19 screenshots reviewed visually.
+- Fixes from review: hero cursor scaled to proper terminal proportions (was a giant block),
+  counter pacing 1.2s, skip-intro label "→".
+- Confidentiality sweep: grep for client names + phone across src/public/docs → the only hit was
+  DECISIONS.md quoting the rule itself; scrubbed and rewrote git history (filter-branch + purged
+  backup refs/reflog; verified `git grep` across rev-list --all is clean).
+- Added OG image (hero frame at 1200×630), JSON-LD Person schema, twitter card meta.
