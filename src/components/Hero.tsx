@@ -69,7 +69,7 @@ export function Hero() {
       <div data-rise className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
         <p className="label-mono">scroll to roll film</p>
         <div className="mx-auto mt-3 h-10 w-px overflow-hidden bg-line">
-          <div className="h-1/2 w-px animate-[scrollcue_1.8s_ease-in-out_infinite] bg-accent" />
+          <div className="h-1/2 w-px animate-[scrollcue_1.8s_ease-in-out_infinite] bg-accent motion-reduce:animate-none" />
         </div>
       </div>
     </section>

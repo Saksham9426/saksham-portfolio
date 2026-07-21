@@ -52,6 +52,7 @@ export function TopNav() {
               data-active={active === a.id}
               onClick={() => scrollToId(a.id)}
               title={`Act ${a.num} — ${a.title}`}
+              aria-label={`Act ${a.num} — ${a.title}`}
             >
               {a.num}
             </button>

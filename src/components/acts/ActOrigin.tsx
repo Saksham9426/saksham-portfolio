@@ -62,8 +62,8 @@ export function ActOrigin() {
               The sibling project: a real-time facial-expression classifier — OpenCV + CNN,{' '}
               <span className="text-text">F1&nbsp;0.81</span> across ~1,200 labeled clips at{' '}
               <span className="text-text">~55&nbsp;ms per frame</span> — that detects your emotion
-              and re-curates the playlist until your mood actually lifts. Piloted at 3 partner
-              institutions.
+              and re-curates the playlist until it detects your mood improving. Piloted at 3
+              partner institutions.
             </p>
             <ul className="mt-5 space-y-1.5 font-mono text-xs text-dim">
               <li>

@@ -52,6 +52,11 @@ function EvalCenterpiece() {
             scrollTrigger: { trigger: wrap, start: 'top 70%', once: true },
           })
         }
+        // media change mid-tween: settle on the final state, not a stale frame
+        return () => {
+          proxy.v = 89
+          update()
+        }
       },
     )
     return () => mm.revert()

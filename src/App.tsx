@@ -7,9 +7,24 @@ import { Palette } from './components/Palette'
 import { initSmoothScroll } from './lib/scroll'
 import { ScrollTrigger } from './lib/gsap'
 
-/** Skip the boot for same-session returns and deep links (#act-N). */
+const SECTION_IDS = [
+  'top',
+  'act-1',
+  'act-2',
+  'act-3',
+  'act-4',
+  'contact',
+  'jsw',
+  'barclays',
+  'beacons',
+  'metafrazo',
+]
+
+const hashId = () => decodeURIComponent(window.location.hash.slice(1))
+
+/** Skip the boot for same-session returns and known deep links (#act-N). */
 const alreadyBooted = () =>
-  sessionStorage.getItem('sa:booted') === '1' || window.location.hash.length > 1
+  sessionStorage.getItem('sa:booted') === '1' || SECTION_IDS.includes(hashId())
 
 export default function App() {
   const [revealed, setRevealed] = useState(alreadyBooted)
@@ -28,8 +43,15 @@ export default function App() {
     if (!overlayGone) return
     initSmoothScroll()
     ScrollTrigger.refresh()
-    if (window.location.hash.length > 1) {
-      document.querySelector(window.location.hash)?.scrollIntoView()
+    const id = hashId()
+    if (id) document.getElementById(id)?.scrollIntoView()
+    // pins/triggers were measured with fallback fonts; re-measure after swap
+    let stale = false
+    document.fonts?.ready.then(() => {
+      if (!stale) ScrollTrigger.refresh()
+    })
+    return () => {
+      stale = true
     }
   }, [overlayGone])
 

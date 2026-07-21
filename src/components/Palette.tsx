@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { fuzzyScore } from '../lib/fuzzy'
 import { scrollToId, lockScroll, unlockScroll } from '../lib/scroll'
 import { gsap, prefersReducedMotion } from '../lib/gsap'
@@ -129,6 +129,10 @@ export function Palette({ enabled }: { enabled: boolean }) {
           }
           return true
         })
+      } else if (open && e.key === 'Escape') {
+        // works even if focus escaped the input (chrome clicks, etc.)
+        e.preventDefault()
+        close()
       }
     }
     const onSummon = () => enabled && setOpen(true)
@@ -138,7 +142,8 @@ export function Palette({ enabled }: { enabled: boolean }) {
       window.removeEventListener('keydown', onKey)
       window.removeEventListener('sa:palette', onSummon)
     }
-  }, [enabled])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [enabled, open])
 
   useLayoutEffect(() => {
     if (!open) return
@@ -209,7 +214,12 @@ export function Palette({ enabled }: { enabled: boolean }) {
             role="dialog"
             aria-modal="true"
             aria-label="Command palette"
+            data-lenis-prevent
             className="mt-[12vh] w-full max-w-xl overflow-hidden rounded-lg border border-line bg-ink-2 shadow-[0_24px_80px_rgba(0,0,0,0.6)]"
+            onMouseDown={(e) => {
+              // clicking panel chrome must not steal focus from the input
+              if (!(e.target as HTMLElement).closest('input')) e.preventDefault()
+            }}
           >
             <div className="flex items-center gap-3 border-b border-line px-4">
               <span aria-hidden="true" className="font-mono text-sm text-accent">
@@ -219,6 +229,7 @@ export function Palette({ enabled }: { enabled: boolean }) {
                 ref={inputRef}
                 role="combobox"
                 aria-expanded="true"
+                aria-autocomplete="list"
                 aria-controls="palette-list"
                 aria-activedescendant={results[sel] ? `pal-opt-${results[sel].id}` : undefined}
                 aria-label="Search commands"
@@ -233,42 +244,42 @@ export function Palette({ enabled }: { enabled: boolean }) {
               <span className="kbd shrink-0">esc</span>
             </div>
 
-            <ul
-              id="palette-list"
-              ref={listRef}
-              role="listbox"
-              aria-label="Results"
-              className="max-h-[46vh] overflow-y-auto py-2"
-            >
+            <div className="max-h-[46vh] overflow-y-auto py-2">
               {results.length === 0 && (
-                <li className="px-4 py-6 font-mono text-sm text-faint">
+                <p className="px-4 py-6 font-mono text-sm text-dim">
                   no matches — command not found
-                </li>
+                </p>
               )}
-              {results.map((it, i) => {
-                const header = !query.trim() && (i === 0 || results[i - 1].group !== it.group)
-                return (
-                  <li key={it.id}>
-                    {header && <p className="label-mono px-4 pb-1 pt-3 text-faint">{it.group}</p>}
-                    <button
-                      id={`pal-opt-${it.id}`}
-                      role="option"
-                      aria-selected={i === sel}
-                      className={`flex w-full items-center justify-between gap-4 px-4 py-2.5 text-left font-mono text-sm ${
-                        i === sel
-                          ? 'border-l-2 border-accent bg-surface text-text'
-                          : 'border-l-2 border-transparent text-dim'
-                      }`}
-                      onMouseEnter={() => setSel(i)}
-                      onClick={() => runItem(it)}
-                    >
-                      <span className="truncate">{it.label}</span>
-                      {it.hint && <span className="shrink-0 text-xs text-faint">{it.hint}</span>}
-                    </button>
-                  </li>
-                )
-              })}
-            </ul>
+              <ul id="palette-list" ref={listRef} role="listbox" aria-label="Results">
+                {results.map((it, i) => {
+                  const header = !query.trim() && (i === 0 || results[i - 1].group !== it.group)
+                  return (
+                    <Fragment key={it.id}>
+                      {header && (
+                        <li role="presentation" className="label-mono px-4 pb-1 pt-3 text-faint">
+                          {it.group}
+                        </li>
+                      )}
+                      <li
+                        id={`pal-opt-${it.id}`}
+                        role="option"
+                        aria-selected={i === sel}
+                        className={`flex cursor-pointer items-center justify-between gap-4 px-4 py-2.5 font-mono text-sm ${
+                          i === sel
+                            ? 'border-l-2 border-accent bg-surface text-text'
+                            : 'border-l-2 border-transparent text-dim'
+                        }`}
+                        onMouseEnter={() => setSel(i)}
+                        onClick={() => runItem(it)}
+                      >
+                        <span className="truncate">{it.label}</span>
+                        {it.hint && <span className="shrink-0 text-xs text-faint">{it.hint}</span>}
+                      </li>
+                    </Fragment>
+                  )
+                })}
+              </ul>
+            </div>
 
             <div className="flex items-center gap-4 border-t border-line px-4 py-2.5 font-mono text-[10px] text-faint">
               <span>↑↓ navigate</span>
@@ -279,15 +290,21 @@ export function Palette({ enabled }: { enabled: boolean }) {
         </div>
       )}
 
-      {toast && (
-        <p
-          role="status"
-          className="fixed bottom-6 left-6 z-[95] border border-line bg-ink-2 px-4 py-2.5 font-mono text-xs text-text shadow-lg"
-        >
-          <span className="text-accent">$ </span>
-          {toast}
-        </p>
-      )}
+      {/* persistent live region so toast text is reliably announced */}
+      <p
+        role="status"
+        aria-live="polite"
+        className={`fixed bottom-6 left-6 z-[95] border border-line bg-ink-2 px-4 py-2.5 font-mono text-xs text-text shadow-lg transition-opacity duration-200 ${
+          toast ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+      >
+        {toast && (
+          <>
+            <span className="text-accent">$ </span>
+            {toast}
+          </>
+        )}
+      </p>
     </>
   )
 }

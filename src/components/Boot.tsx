@@ -40,24 +40,25 @@ export function Boot({ onReveal, onDone }: Props) {
       return
     }
     let cancelled = false
+    const halted = () => cancelled || exiting.current
     ;(async () => {
       await wait(450)
       for (let i = 1; i <= CMD.length; i++) {
-        if (cancelled) return
+        if (halted()) return
         setS((p) => ({ ...p, cmdChars: i }))
         await wait(26 + Math.random() * 38)
       }
       await wait(320)
       for (let i = 0; i < LOGS.length; i++) {
-        if (cancelled) return
+        if (halted()) return
         setS((p) => ({ ...p, shown: i + 1 }))
         // the £1B line gets a longer, deliberate beat before its stamp
         await wait(LOGS[i].text.includes('£1B') ? 520 : 140 + Math.random() * 140)
-        if (cancelled) return
+        if (halted()) return
         setS((p) => ({ ...p, stamps: i + 1 }))
         await wait(90)
       }
-      if (cancelled) return
+      if (halted()) return
       await wait(260)
       setS((p) => ({ ...p, ready: true }))
     })()
@@ -147,7 +148,7 @@ export function Boot({ onReveal, onDone }: Props) {
         style={{ boxShadow: '0 0 28px 3px rgba(232,163,61,0.7)' }}
       />
 
-      <p className="sr-only" role="status">
+      <p className="sr-only">
         Terminal intro animation playing. Press Enter to begin, or use the Skip intro button to go
         straight to the content.
       </p>
@@ -192,7 +193,7 @@ export function Boot({ onReveal, onDone }: Props) {
               <span className="text-faint">&gt; </span>
               <span>ready.</span>
               <span className="cursor-block" />
-              <div className="mt-6 animate-pulse font-mono text-dim">
+              <div className="mt-6 animate-pulse font-mono text-dim motion-reduce:animate-none">
                 {coarse ? (
                   <span>tap anywhere to begin</span>
                 ) : (

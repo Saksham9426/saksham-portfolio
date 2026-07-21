@@ -65,7 +65,7 @@ export function DeltaBars({ title, note, rows, className }: Props) {
                       className="h-[6px] flex-none origin-left rounded-full"
                       style={{
                         width: `${(r[k] / max) * 72}%`,
-                        background: k === 'after' ? 'var(--color-accent)' : 'var(--color-line)',
+                        background: k === 'after' ? 'var(--color-accent)' : '#6d6b78',
                       }}
                     />
                     <span

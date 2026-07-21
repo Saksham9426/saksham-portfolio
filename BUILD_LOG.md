@@ -56,3 +56,14 @@
   DECISIONS.md quoting the rule itself; scrubbed and rewrote git history (filter-branch + purged
   backup refs/reflog; verified `git grep` across rev-list --all is clean).
 - Added OG image (hero frame at 1200×630), JSON-LD Person schema, twitter card meta.
+
+## 2026-07-21 — Phase 6: multi-agent review, fixes, deploy prep
+- Ran a 30-agent review workflow: 5 lenses (confidentiality/truthfulness/code/a11y/perf), every
+  finding adversarially verified. 19 confirmed → all fixed; 3 truthfulness flags adjudicated as
+  false positives against the fuller LinkedIn/STAR sources; details in REVIEW.md.
+- Headline fixes: invalid-hash crash (querySelector → getElementById), palette wheel-scroll under
+  Lenis (data-lenis-prevent), palette Escape/focus containment, listbox ARIA restructure, three
+  WCAG contrast fixes (faint text, resume links, before-bars), fonts.ready ScrollTrigger refresh,
+  reduced-motion gaps, JSON-LD alumniOf→affiliation.
+- Post-fix build clean; targeted Playwright smoke verified all behavioral fixes live.
+- README.md + .github/workflows/deploy.yml written.
