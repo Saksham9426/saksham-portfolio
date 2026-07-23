@@ -1,14 +1,9 @@
 import { ActTitle } from '../ActTitle'
 import { Reveal } from '../primitives/Reveal'
 import { site, resumeHref } from '../../content'
+import { replayBoot } from '../../lib/boot'
 
 const copilotStack = ['Python', 'FastAPI', 'Claude API', 'SEC EDGAR', 'RAG'] as const
-
-function replayBoot() {
-  sessionStorage.removeItem('sa:booted')
-  window.history.replaceState(null, '', window.location.pathname)
-  window.location.reload()
-}
 
 export function ActNext() {
   const base = import.meta.env.BASE_URL
@@ -17,7 +12,7 @@ export function ActNext() {
     <>
       <ActTitle id="act-4" num="IV" title="What’s Next" line="The next system is already booting." />
 
-      <section aria-label="Act IV — What's Next" className="container-film pb-10">
+      <section aria-label="Act IV: What's Next" className="container-film pb-10">
         <Reveal className="rounded-lg border border-line bg-ink-2/60 p-6 sm:p-10">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="font-mono text-xs text-accent">$ git clone quant-research-copilot</p>
@@ -27,9 +22,9 @@ export function ActNext() {
           <p className="mt-4 max-w-2xl leading-relaxed text-dim">
             An AI research agent that pulls a company&rsquo;s latest 10-K straight from SEC EDGAR,
             chunks and indexes the filing, and answers analyst questions with{' '}
-            <span className="text-text">citations pinned to the exact source text</span> — refusing,
-            by design, when the filing doesn&rsquo;t support an answer. Evaluation-first, like
-            everything I ship.
+            <span className="text-text">citations pinned to the exact source text</span>. By
+            design, it refuses when the filing doesn&rsquo;t support an answer. Evaluation-first,
+            like everything I ship.
           </p>
           <ul className="mt-6 flex flex-wrap gap-2" aria-label="Stack">
             {copilotStack.map((t) => (
@@ -38,6 +33,12 @@ export function ActNext() {
               </li>
             ))}
           </ul>
+          <p className="mt-5 font-mono text-xs text-dim">
+            <span className="text-faint">source: </span>
+            <a className="nav-link" href={site.quantCopilot} target="_blank" rel="noreferrer">
+              github.com/Saksham9426/quant-research-copilot ↗
+            </a>
+          </p>
         </Reveal>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
@@ -53,8 +54,9 @@ export function ActNext() {
             <p className="font-mono text-xs text-accent">$ lead megabyte --members 100</p>
             <h3 className="mt-3 text-lg font-medium text-text">President · Megabyte Society</h3>
             <p className="mt-3 text-sm leading-relaxed text-dim">
-              Led a 100-member community through 12+ workshops and hackathons with 300+ participants
-              — including a CS literacy program for underprivileged students at a nearby NGO.
+              Led a 100-member community through 12+ workshops and hackathons with 300+
+              participants, including a CS literacy program for underprivileged students at a
+              nearby NGO.
             </p>
           </Reveal>
         </div>
@@ -67,7 +69,7 @@ export function ActNext() {
             Let&rsquo;s build<span className="text-accent">.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-md leading-relaxed text-dim">
-            Recruiting, collaborating, or just curious — my inbox is open.
+            Recruiting, collaborating, or just curious: my inbox is open.
           </p>
           <div className="mt-10 flex flex-col items-center gap-5">
             <a

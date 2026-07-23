@@ -1,8 +1,9 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap, prefersReducedMotion } from '../lib/gsap'
 import { site, resumeHref } from '../content'
+import { MOD_LABEL } from '../lib/platform'
 
-/** Opening frame — plays its entrance as the boot overlay dissolves. */
+/** Opening frame: plays its entrance as the boot overlay dissolves. */
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
 
@@ -43,7 +44,7 @@ export function Hero() {
         </h1>
         <p data-rise className="mt-8 max-w-xl text-base leading-relaxed text-dim sm:text-lg">
           Software engineer &amp; AI builder. Computer Science + Statistics at UIUC. I build systems
-          that ship — and the evaluations that prove they work.
+          that ship, and the evaluations that prove they work.
         </p>
 
         {/* fast path: everything a hurried reader needs, in frame one */}
@@ -61,7 +62,7 @@ export function Hero() {
             email
           </a>
           <span className="hidden text-faint md:inline">
-            <span className="kbd">⌘K</span> to go anywhere
+            <span className="kbd">{MOD_LABEL}</span> to go anywhere
           </span>
         </nav>
       </div>

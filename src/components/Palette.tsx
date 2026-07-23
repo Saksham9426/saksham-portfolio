@@ -2,6 +2,7 @@ import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState } from 
 import { fuzzyScore } from '../lib/fuzzy'
 import { scrollToId, lockScroll, unlockScroll } from '../lib/scroll'
 import { gsap, prefersReducedMotion } from '../lib/gsap'
+import { replayBoot } from '../lib/boot'
 import { site, acts, resumeHref } from '../content'
 
 /** Any component can summon the palette (e.g. the nav button). */
@@ -34,11 +35,11 @@ export function Palette({ enabled }: { enabled: boolean }) {
     const nav = (id: string) => () => scrollToId(id)
     const ext = (url: string) => () => window.open(url, '_blank', 'noopener,noreferrer')
     return [
-      { id: 'top', group: 'navigate', label: 'Title frame — Saksham Aggarwal', hint: 'home', run: nav('top') },
+      { id: 'top', group: 'navigate', label: 'Title frame: Saksham Aggarwal', hint: 'home', run: nav('top') },
       ...acts.map((a) => ({
         id: a.id,
         group: 'navigate',
-        label: `Act ${a.num} — ${a.title}`,
+        label: `Act ${a.num}: ${a.title}`,
         hint: a.id.replace('-', ' '),
         keywords:
           a.id === 'act-2'
@@ -50,13 +51,14 @@ export function Palette({ enabled }: { enabled: boolean }) {
                 : 'next quant copilot projects leadership',
         run: nav(a.id),
       })),
-      { id: 'contact', group: 'navigate', label: 'Contact — final frame', hint: 'contact', keywords: 'email hire', run: nav('contact') },
+      { id: 'contact', group: 'navigate', label: 'Contact: final frame', hint: 'contact', keywords: 'email hire', run: nav('contact') },
       { id: 'resume', group: 'open', label: 'View resume (plain text, printable)', hint: '30s read', keywords: 'cv facts fast', run: () => { window.location.href = base + resumeHref } },
-      { id: 'github', group: 'open', label: 'GitHub — Saksham9426', hint: '↗', run: ext(site.github) },
+      { id: 'github', group: 'open', label: 'GitHub: Saksham9426', hint: '↗', run: ext(site.github) },
       { id: 'linkedin', group: 'open', label: 'LinkedIn', hint: '↗', run: ext(site.linkedin) },
-      { id: 'publication', group: 'open', label: 'Publication — IJHSS (music & stress biomarkers)', hint: '↗', keywords: 'research paper heartune sigma xi', run: ext(site.publicationPdf) },
-      { id: 'chilltrill', group: 'open', label: 'ChillTrill — live demo', hint: '↗', keywords: 'emotion music app', run: ext(site.chilltrill) },
-      { id: 'email', group: 'open', label: `Email — ${site.email}`, hint: 'mailto', run: () => { window.location.href = `mailto:${site.email}` } },
+      { id: 'publication', group: 'open', label: 'Publication: IJHSS (music & stress biomarkers)', hint: '↗', keywords: 'research paper heartune sigma xi', run: ext(site.publicationPdf) },
+      { id: 'chilltrill', group: 'open', label: 'ChillTrill: live demo', hint: '↗', keywords: 'emotion music app', run: ext(site.chilltrill) },
+      { id: 'quant-copilot', group: 'open', label: 'Quant Research Copilot: source', hint: '↗', keywords: 'quant copilot 10-k sec edgar rag project github', run: ext(site.quantCopilot) },
+      { id: 'email', group: 'open', label: `Email: ${site.email}`, hint: 'mailto', run: () => { window.location.href = `mailto:${site.email}` } },
       {
         id: 'copy-email',
         group: 'commands',
@@ -83,7 +85,7 @@ export function Palette({ enabled }: { enabled: boolean }) {
         group: 'commands',
         label: 'whoami',
         hint: '$',
-        run: () => setToast('guest — curious visitor with excellent taste'),
+        run: () => setToast('guest: curious visitor with excellent taste'),
       },
       {
         id: 'reboot',
@@ -91,11 +93,7 @@ export function Palette({ enabled }: { enabled: boolean }) {
         label: 'boot --replay',
         hint: '$',
         keywords: 'intro terminal restart replay',
-        run: () => {
-          sessionStorage.removeItem('sa:booted')
-          window.history.replaceState(null, '', window.location.pathname)
-          window.location.reload()
-        },
+        run: replayBoot,
       },
     ]
   }, [base])
@@ -233,7 +231,7 @@ export function Palette({ enabled }: { enabled: boolean }) {
                 aria-controls="palette-list"
                 aria-activedescendant={results[sel] ? `pal-opt-${results[sel].id}` : undefined}
                 aria-label="Search commands"
-                className="w-full bg-transparent py-3.5 font-mono text-sm text-text placeholder-faint outline-none"
+                className="palette-input w-full bg-transparent py-3.5 font-mono text-sm text-text placeholder-faint outline-none"
                 placeholder="jump to an act, open a link, run a command…"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
@@ -247,7 +245,7 @@ export function Palette({ enabled }: { enabled: boolean }) {
             <div className="max-h-[46vh] overflow-y-auto py-2">
               {results.length === 0 && (
                 <p className="px-4 py-6 font-mono text-sm text-dim">
-                  no matches — command not found
+                  no matches: command not found
                 </p>
               )}
               <ul id="palette-list" ref={listRef} role="listbox" aria-label="Results">
@@ -285,6 +283,7 @@ export function Palette({ enabled }: { enabled: boolean }) {
               <span>↑↓ navigate</span>
               <span>↵ select</span>
               <span>esc close</span>
+              <span className="ml-auto text-right">shipped one of these at respan</span>
             </div>
           </div>
         </div>

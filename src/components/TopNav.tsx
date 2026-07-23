@@ -1,6 +1,8 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap, prefersReducedMotion } from '../lib/gsap'
 import { scrollToId } from '../lib/scroll'
+import { replayBoot } from '../lib/boot'
+import { MOD_LABEL } from '../lib/platform'
 import { acts, resumeHref } from '../content'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { openPalette } from './Palette'
@@ -44,6 +46,14 @@ export function TopNav() {
         </button>
 
         <nav aria-label="Sections" className="flex items-center gap-4 font-mono text-xs sm:gap-5">
+          <button
+            type="button"
+            className="nav-link cursor-pointer"
+            onClick={replayBoot}
+            aria-label="Replay boot sequence"
+          >
+            replay
+          </button>
           {acts.map((a) => (
             <button
               key={a.id}
@@ -51,8 +61,8 @@ export function TopNav() {
               className="nav-link hidden cursor-pointer md:inline"
               data-active={active === a.id}
               onClick={() => scrollToId(a.id)}
-              title={`Act ${a.num} — ${a.title}`}
-              aria-label={`Act ${a.num} — ${a.title}`}
+              title={`Act ${a.num}: ${a.title}`}
+              aria-label={`Act ${a.num}: ${a.title}`}
             >
               {a.num}
             </button>
@@ -63,11 +73,26 @@ export function TopNav() {
           <button
             type="button"
             onClick={openPalette}
-            className="kbd cursor-pointer transition-colors hover:border-accent hover:text-text"
-            aria-label="Open command palette"
+            className="group relative -my-2 cursor-pointer p-2 text-dim transition-colors hover:text-text focus-visible:text-text"
+            aria-label={`Search (${MOD_LABEL})`}
           >
-            <span className="md:hidden">menu</span>
-            <span className="hidden md:inline">⌘K</span>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.2" y2="16.2" />
+            </svg>
+            <span className="kbd pointer-events-none absolute right-0 top-full mt-2 hidden whitespace-nowrap group-hover:inline-block group-focus-visible:inline-block">
+              Search {MOD_LABEL}
+            </span>
           </button>
         </nav>
       </div>

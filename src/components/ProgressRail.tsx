@@ -4,7 +4,7 @@ import { useActiveSection } from '../hooks/useActiveSection'
 
 const IDS = acts.map((a) => a.id)
 
-/** Desktop act progress rail — always-visible orientation + jumps. */
+/** Desktop act progress rail: always-visible orientation + jumps. */
 export function ProgressRail() {
   const active = useActiveSection(IDS)
 
@@ -21,7 +21,7 @@ export function ProgressRail() {
             type="button"
             onClick={() => scrollToId(a.id)}
             className="group flex cursor-pointer items-center gap-3"
-            aria-label={`Act ${a.num} — ${a.title}`}
+            aria-label={`Act ${a.num}: ${a.title}`}
             aria-current={isActive ? 'true' : undefined}
           >
             <span

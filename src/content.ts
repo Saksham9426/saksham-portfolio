@@ -1,6 +1,6 @@
 /**
  * Single source of truth for links, structured data, and every metric on the
- * site. All values come verbatim from Saksham's resume / LinkedIn / notes —
+ * site. All values come verbatim from Saksham's resume / LinkedIn / notes,
  * nothing invented. Confidentiality: Respan content stays at public-resume
  * level (no client names, no internal detail); no phone number anywhere.
  */
@@ -15,6 +15,7 @@ export const site = {
     'https://www.internationaljournalssrg.org/IJHSS/2023/Volume10-Issue4/IJHSS-V10I4P108.pdf',
   chilltrill: 'https://chilltrill.streamlit.app/',
   chilltrillRepo: 'https://github.com/Saksham9426/ChillTrill',
+  quantCopilot: 'https://github.com/Saksham9426/quant-research-copilot',
   repo: 'https://github.com/Saksham9426/saksham-portfolio',
 } as const
 
@@ -53,7 +54,7 @@ export type Delta = {
   rows: readonly { label: string; before: number; after: number; unit: string; decimals?: number }[]
 }
 
-/** Act II — internships in chronological order: rising mastery. */
+/** Act II: internships in chronological order, rising mastery. */
 export const craftChapters: readonly {
   id: string
   index: string
@@ -71,7 +72,7 @@ export const craftChapters: readonly {
     company: 'JSW Group',
     role: 'Machine Learning Intern',
     where: 'Mumbai, India',
-    when: 'Apr — Jun 2024',
+    when: 'Apr to Jun 2024',
     thread: 'Learn the machine.',
     stats: [
       { value: 60, label: 'weather stations' },
@@ -90,7 +91,7 @@ export const craftChapters: readonly {
     company: 'Barclays',
     role: 'Data & Decision Analyst · Analytics Center of Excellence',
     where: 'Noida, India & London, UK',
-    when: 'May — Jul 2025',
+    when: 'May to Jul 2025',
     thread: 'Scale the question.',
     stats: [
       { value: 845, prefix: '£', suffix: 'M', label: 'cost-to-serve allocated' },
@@ -112,7 +113,7 @@ export const craftChapters: readonly {
     company: 'Beacons AI',
     role: 'Software Product Manager · YC S19',
     where: 'Champaign, IL',
-    when: 'Oct 2025 — Feb 2026',
+    when: 'Oct 2025 to Feb 2026',
     thread: 'Ship to humans.',
     stats: [
       { value: 200, suffix: '+', label: 'matches per week, sustained' },
@@ -133,7 +134,7 @@ export const craftChapters: readonly {
     company: 'MetaFrazo',
     role: 'Software Engineer Intern (AI) · Phraze',
     where: 'Chicago, IL · Remote',
-    when: 'Jan — May 2026',
+    when: 'Jan to May 2026',
     thread: 'Make AI measurable.',
     stats: [
       { value: 0.76, decimals: 2, label: "Cohen's κ agreement with human QA" },
@@ -148,7 +149,7 @@ export const craftChapters: readonly {
   },
 ]
 
-/** Act III — Respan modules (public-resume level only; no client names). */
+/** Act III: Respan modules (public-resume level only; no client names). */
 export const frontierModules = [
   {
     cmd: 'eval --production',
@@ -158,22 +159,22 @@ export const frontierModules = [
   {
     cmd: 'guard --runtime',
     title: 'Runtime permission layer',
-    body: 'Every action the agent takes is validated against scope and safety policies before execution — blocking out-of-scope and destructive operations across 5,000+ daily LLM calls.',
+    body: 'Every action the agent takes is validated against scope and safety policies before execution, blocking out-of-scope and destructive operations across 5,000+ daily LLM calls.',
   },
   {
     cmd: 'palette --cmd-k',
     title: 'The Cmd-K palette',
-    body: 'Sub-100ms search over 6 resource types; 3+ clicks collapsed to one keystroke; 93% active-user adoption in 28 days. The palette on this site is its descendant — press ⌘K.',
+    body: 'Sub-100ms search over 6 resource types; 3+ clicks collapsed to one keystroke; 93% active-user adoption in 28 days. The palette on this site is its descendant.',
   },
   {
     cmd: 'perf --n-plus-one',
     title: 'O(N) → O(1)',
-    body: 'Eliminated an N+1 query pattern on the experiments endpoint by reusing the codebase’s bulk-resolution pattern instead of per-row lookups — shipped across React/TypeScript and Django/DRF.',
+    body: 'Eliminated an N+1 query pattern on the experiments endpoint by reusing the codebase’s bulk-resolution pattern instead of per-row lookups, shipped across React/TypeScript and Django/DRF.',
   },
   {
     cmd: 'bench --frontier',
     title: 'Frontier-model benchmarking',
-    body: 'Benchmarked Opus 4.8, GPT-5.6 and Fable 5 across 250+ prompts on latency, cost, accuracy and inference configs before gateway onboarding — and built the platform’s gateway-setup CLI.',
+    body: 'Benchmarked Opus 4.8, GPT-5.6 and Fable 5 across 250+ prompts on latency, cost, accuracy and inference configs before gateway onboarding, and built the platform’s gateway-setup CLI.',
   },
 ] as const
 

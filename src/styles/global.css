@@ -48,6 +48,13 @@ body {
   border-radius: 2px;
 }
 
+/* the palette panel clips overflow, so its input gets an inset indicator
+   instead of the outer ring (which the panel's rounded corners would cut) */
+.palette-input:focus-visible {
+  outline: none;
+  box-shadow: inset 0 -2px 0 0 var(--color-accent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -73,7 +80,7 @@ body {
   font-weight: 360;
 }
 
-/* small mono system labels: "ACT I — ORIGIN" etc. */
+/* small mono system labels: "ACT I", "final frame", etc. */
 .label-mono {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -106,7 +113,7 @@ body {
   background: var(--color-accent);
 }
 
-/* blinking block cursor — the motif that survives the boot */
+/* blinking block cursor: the motif that survives the boot */
 .cursor-block {
   display: inline-block;
   width: 0.55em;
@@ -144,7 +151,7 @@ body {
   }
 }
 
-/* film grain — barely-there texture so the dark reads cinematic, not flat */
+/* film grain: barely-there texture so the dark reads cinematic, not flat */
 .grain {
   position: fixed;
   inset: 0;
@@ -154,7 +161,7 @@ body {
   opacity: 0.03;
 }
 
-/* CRT scanlines — boot overlay only */
+/* CRT scanlines, boot overlay only */
 .scanlines {
   position: absolute;
   inset: 0;

@@ -74,3 +74,19 @@
 - Full smoke test re-run against the LIVE URL (desktop/mobile/reduced-motion/resume): zero errors.
 - Final polish: hero cursor refined to true terminal proportions (0.16em, baseline-aligned).
 - STATUS.md written (done list, live URL, taste-pass items for Saksham).
+
+## 2026-07-22 — polish pass (em-dashes, quant copilot link, platform keycaps, nav upgrades)
+- Removed every em-dash from src/, public/, index.html (contextual replacements; date ranges now
+  "Apr to Jun 2024"); the only remaining U+2014 is the intentional one in fuzzy.ts's word-boundary
+  regex. Title/og:title/meta descriptions reworded for link scrapers.
+- Linked the Quant Research Copilot repo from content.ts, the palette "open" group, and the Act IV
+  card. Extracted replayBoot() to lib/boot.ts (used by ActNext footer, palette command, and the new
+  always-visible "replay" nav button).
+- Platform-aware keycaps via lib/platform.ts (⌘K on Mac, Ctrl K elsewhere; display-only). TopNav's
+  text button replaced with an inline-SVG magnifier + hover/focus tooltip ("Search Ctrl K").
+  Act III palette card gained a "try it" button that opens the palette.
+- Fixed the clipped palette focus ring: the global :focus-visible outline (offset 3px) was clipped
+  by the panel's overflow-hidden; scoped .palette-input rule swaps it for an inset amber underline.
+- Palette footer gained a quiet right-aligned "shipped one of these at respan".
+- Verified live via Playwright: tooltip on hover+focus, tie-in opens palette, quant link + replay
+  button present, hero shows "Ctrl K" on Windows, focus underline unclipped, zero page errors.

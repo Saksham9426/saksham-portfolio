@@ -3,6 +3,8 @@ import { ActTitle } from '../ActTitle'
 import { Reveal } from '../primitives/Reveal'
 import { gsap } from '../../lib/gsap'
 import { frontierModules } from '../../content'
+import { openPalette } from '../Palette'
+import { MOD_LABEL } from '../../lib/platform'
 
 /**
  * The film's peak: the 41% → 89% evaluation tune-up.
@@ -87,7 +89,7 @@ function EvalCenterpiece() {
         <p className="mt-8 max-w-2xl leading-relaxed text-dim">
           An enterprise fintech client&rsquo;s LLM agent was underperforming its own evaluations. I
           diagnosed and fixed a context-persistence bug, then tuned the agent against a golden
-          dataset until the score held —{' '}
+          dataset until the score held:{' '}
           <span className="text-text">89%, up from 41%.</span>
         </p>
       </div>
@@ -105,12 +107,12 @@ export function ActFrontier() {
         line="Where the system meets the unknown."
       />
 
-      <section aria-label="Act III — The Frontier" className="pb-24 md:pb-36">
+      <section aria-label="Act III: The Frontier" className="pb-24 md:pb-36">
         <div className="container-film pb-16">
           <Reveal>
             <p className="max-w-2xl text-lg leading-relaxed text-dim">
               Summer 2026. <span className="text-text">Respan (Y Combinator W24)</span>, San
-              Francisco — software engineering across full-stack and AI. The job, at its core:{' '}
+              Francisco: software engineering across full-stack and AI. The job, at its core:{' '}
               <span className="text-text">
                 make AI systems provably good enough that enterprises can bet on them.
               </span>
@@ -134,6 +136,15 @@ export function ActFrontier() {
                 <p className="font-mono text-xs text-accent">$ {m.cmd}</p>
                 <h3 className="mt-3 text-lg font-medium text-text">{m.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-dim">{m.body}</p>
+                {m.cmd === 'palette --cmd-k' && (
+                  <button
+                    type="button"
+                    onClick={openPalette}
+                    className="mt-4 inline-flex cursor-pointer items-center gap-2 font-mono text-xs text-dim transition-colors hover:text-accent focus-visible:text-accent"
+                  >
+                    try it <span className="kbd">{MOD_LABEL}</span>
+                  </button>
+                )}
               </Reveal>
             ))}
           </div>
