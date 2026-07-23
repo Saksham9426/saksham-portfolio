@@ -3,7 +3,7 @@ import { Reveal } from '../primitives/Reveal'
 import { site, resumeHref } from '../../content'
 import { replayBoot } from '../../lib/boot'
 
-const copilotStack = ['Python', 'FastAPI', 'Claude API', 'SEC EDGAR', 'RAG'] as const
+const copilotStack = ['Python', 'FastAPI', 'Claude API', 'FAISS', 'SEC EDGAR', 'RAG'] as const
 
 export function ActNext() {
   const base = import.meta.env.BASE_URL
@@ -23,8 +23,10 @@ export function ActNext() {
             An AI research agent that pulls a company&rsquo;s latest 10-K straight from SEC EDGAR,
             chunks and indexes the filing, and answers analyst questions with{' '}
             <span className="text-text">citations pinned to the exact source text</span>. By
-            design, it refuses when the filing doesn&rsquo;t support an answer. Evaluation-first,
-            like everything I ship.
+            design, it refuses when the filing doesn&rsquo;t support an answer. On its 40-question
+            eval harness it scores <span className="text-text">98% faithfulness</span> and 80%
+            retrieval accuracy, with 15/15 correct refusals on unanswerable questions at a 12%
+            false-refusal rate. Evaluation-first, like everything I ship.
           </p>
           <ul className="mt-6 flex flex-wrap gap-2" aria-label="Stack">
             {copilotStack.map((t) => (

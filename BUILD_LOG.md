@@ -90,3 +90,11 @@
 - Palette footer gained a quiet right-aligned "shipped one of these at respan".
 - Verified live via Playwright: tooltip on hover+focus, tie-in opens palette, quant link + replay
   button present, hero shows "Ctrl K" on Windows, focus underline unclipped, zero page errors.
+
+## 2026-07-23 — resume sync: Quant Research Copilot finalized
+- resume.html: copilot title now links to the repo (matching ChillTrill), FAISS added to the stack
+  line, and the entry carries two bullets: the RAG/verification design and the measured eval
+  results (98% faithfulness, 80% retrieval accuracy, 15/15 correct refusals on unanswerable
+  questions at 12% false-refusal, always reported as a pair).
+- ActNext card: one added sentence with the same figures; FAISS added to the stack chips.
+- Verified: no phone number in resume.html, no em-dashes outside fuzzy.ts, experience order intact.

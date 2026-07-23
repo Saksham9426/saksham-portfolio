@@ -135,9 +135,10 @@
   <h2>Projects &amp; Leadership</h2>
 
   <div class="entry">
-    <div class="row"><b>Quant Research Copilot</b><span class="right mono">Python · FastAPI · Claude API · SEC EDGAR · RAG</span></div>
+    <div class="row"><b><a href="https://github.com/Saksham9426/quant-research-copilot">Quant Research Copilot</a></b><span class="right mono">Python · FastAPI · Claude API · FAISS · SEC EDGAR · RAG</span></div>
     <ul>
-      <li>Built an AI agent that pulls a company's latest <b>10-K</b> from <b>SEC EDGAR</b>, chunks and indexes it, and answers analyst questions with <b>citations</b> to the exact filing text, refusing when the answer is not supported by the source</li>
+      <li>Built a <b>RAG</b> agent over <b>SEC EDGAR 10-K</b> filings with section-aware chunking and a <b>FAISS</b> index; every answer cites exact filing text, with each quote verified verbatim against retrieved context or downgraded to a refusal</li>
+      <li>Designed a reproducible <b>40-question eval harness</b> (rubric-scored LLM judge, claim-level entailment): <b>98% faithfulness</b>, <b>80% retrieval accuracy</b>, <b>15/15</b> correct refusals on unanswerable questions at <b>12% false-refusal</b></li>
     </ul>
   </div>
 
